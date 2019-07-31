@@ -20,17 +20,17 @@ goto custom_exit
 
 :option_one
 kernel ${memdisk} iso raw
-initrd ${b}/OS%20Images/Ubuntu/ubuntu-16.04-server-amd64.iso
+initrd ${b}/wanulator_2_11.iso
 boot 
 
 :option_two
-kernel /memdisk iso raw
-initrd /wanulator_2_11.iso
+kernel memdisk iso raw
+initrd wanulator_2_11.iso
 boot 
 
 :option_three
-kernel ${b}/OS%20Images/netboot/memdisk iso raw
-initrd ${b}/OS%20Images/WANulator/wanulator_2_11.iso 
+kernel ${b}/OS Images/netboot/memdisk iso raw
+initrd ${b}/OS Images/WANulator/wanulator_2_11.iso 
 boot
 
 goto custom_exit
