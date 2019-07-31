@@ -1,12 +1,65 @@
 #!ipxe
-###
-### netboot.xyz-custom menu
-###
+isset ${server-ip} || set server-ip gru.test.domain
 
 :start
-echo Hello world!
-sleep 10
+menu Bootables
+item --gap --             -------------------------- Bootables ----------------------------------
+item --key 6 ubuntu16 Ubuntu 16.04 LTS
+item --key 8 ubuntu18 Ubuntu 18.04 LTS
+item --key 10 WANulator2.11
+item --gap --             ------------------------- Options --------------------------------
+item --key g goback (G)o back to previous menu
+choose version && goto ${version} || goto start
+
+:goback
+chain http://${server-ip}/boot/linux.ipxe
+
+:ubuntu16_x86_64
+kernel http://archive.ubuntu.com/ubuntu/dists/xenial/main/installer-i386/current/images/netboot/ubuntu-installer/i386/linux initrd=initrd.gz
+initrd http://archive.ubuntu.com/ubuntu/dists/xenial/main/installer-i386/current/images/netboot/ubuntu-installer/i386/initrd.gz
+boot || imgfree
+shell
+
+:ubuntu18_x86_64
+kernel http://archive.ubuntu.com/ubuntu/dists/xenial/main/installer-amd64/current/images/netboot/ubuntu-installer/amd64/linux initrd=initrd.gz
+initrd http://archive.ubuntu.com/ubuntu/dists/xenial/main/installer-amd64/current/images/netboot/ubuntu-installer/amd64/initrd.gz
+boot || imgfree
+shell
+
+:WANulator
+
+#!ipxe
+###
+### netboot.xyz-custom menu example
+###
+
+:custom
+clear custom_choice
+menu Installation Menu
+item --gap Linux
+item ubuntu16.04 ${space} Ubuntu 16.04 LTS
+item ubuntu18.04 ${space} Ubuntu 18.04 LTS
+item --gap WANulator (WIP)
+item option_three ${space} WANulator 2.11
+choose custom_choice || goto custom_exit
+echo ${cls}
+goto ${custom_choice}
 goto custom_exit
 
+:option_one
+kernel https://boot.netboot.xyz/memdisk raw iso
+initrd http://gru/OS%20Images/Ubuntu/ubuntu-16.04-server-amd64.iso
+boot || goto custom_exit
+
+:option_two
+kernel https://boot.netboot.xyz/memdisk raw iso
+initrd http://gru/OS%20Images/Ubuntu/ubuntu-18.04.2-server-amd64.iso
+boot || goto custom_exit
+
+:option_three
+kernel https://boot.netboot.xyz/memdisk raw iso
+initrd http://http://gru/OS%20Images/WANulator/wanulator_2_11.iso || goto custom
+
 :custom_exit
-exit 0
+chain utils.ipxe
+exit
