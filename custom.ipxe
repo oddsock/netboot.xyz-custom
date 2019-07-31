@@ -25,13 +25,14 @@ initrd ${b}/wanulator_2_11.iso
 
 
 :option_two
-kernel /memdisk iso raw
-initrd /wanulator_2_11.iso
-
+kernel http://10.10.10.3/memdisk iso raw
+initrd http://10.10.10.3/wanulator_2_11.iso
+boot
 
 :option_three
 kernel ${memdisk} iso raw
 initrd http://10.10.10.3/wanulator_2_11.iso
+boot
 
 :option_four
 imgfree
