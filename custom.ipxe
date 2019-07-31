@@ -10,6 +10,7 @@ clear custom_choice
 menu Installation Menu
 item --gap Linux
 item option_three ${space} WANulator 2.11
+item option_four ${space} WANulator 2.11
 
 choose custom_choice || goto custom_exit
 echo ${cls}
@@ -19,6 +20,12 @@ goto custom_exit
 :option_three
 imgfree
 kernel ${memdisk} iso ramdisksize=1024
+initrd http://10.10.10.3/wanulator_2_11.iso
+boot
+
+:option_four
+imgfree
+kernel ${memdisk} iso findiso=wanulator_2_11.iso
 initrd http://10.10.10.3/wanulator_2_11.iso
 boot
 
