@@ -27,7 +27,7 @@ boot
 imgfree
 kernel ${memdisk} iso findiso=wanulator_2_11.iso
 initrd http://10.10.10.3/wanulator_2_11.iso
-boot
+boot findiso=wanulator_2_11.iso
 
 goto custom_exit
 
