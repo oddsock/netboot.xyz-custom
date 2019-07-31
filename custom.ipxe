@@ -33,14 +33,14 @@ boot
 
 :option_three
 imgfree
-kernel ${memdisk} iso raw
+kernel ${memdisk} iso
 initrd http://10.10.10.3/wanulator_2_11.iso
 boot
 
 :option_four
 imgfree
 initrd http://10.10.10.3/wanulator_2_11.iso
-kernel http://10.10.10.3/memdisk iso raw
+kernel http://10.10.10.3/memdisk iso
 boot || goto custom_exit
 
 goto custom_exit
