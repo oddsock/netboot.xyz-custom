@@ -10,7 +10,7 @@ clear custom_choice
 menu Installation Menu
 item --gap Linux
 item option_three ${space} WANulator 2.11 vmalloc=512Mi
-item option_four ${space} WANulator 2.11 with harddisk in kernel line
+item option_four ${space} WANulator 2.11 iso int
 item option_one ${space} wanulator with modprobe phram phram=memdisk,$(memdiskfind)
 
 choose custom_choice || goto custom_exit
@@ -27,8 +27,9 @@ boot
 
 :option_four
 imgfree
-kernel ${memdisk} harddisk
+kernel ${memdisk}
 initrd http://10.10.10.3/wanulator_2_11.iso
+APPEND iso int
 boot
 
 :option_one
