@@ -1,5 +1,10 @@
 #!ipxe
 
+set b http://10.10.10.3
+set 210:string http://10.10.10.3/
+set github_user oddsock
+
+
 :custom
 clear custom_choice
 menu Installation Menu
@@ -14,18 +19,18 @@ goto ${custom_choice}
 goto custom_exit
 
 :option_one
-kernel ${memdisk} iso raw
-initrd http://10.10.10.3/OS%20Images/Ubuntu/ubuntu-16.04-server-amd64.iso
+kernel ${b}/OS%20Images/netboot/memdisk iso raw
+initrd ${b}/OS%20Images/Ubuntu/ubuntu-16.04-server-amd64.iso
 boot 
 
 :option_two
-kernel ${memdisk} iso raw
-initrd http://10.10.10.3/OS%20Images/Ubuntu/ubuntu-18.04.2-server-amd64.iso
+kernel ${b}/OS%20Images/netboot/memdisk iso raw
+initrd ${b}/OS%20Images/Ubuntu/ubuntu-18.04.2-server-amd64.iso
 boot 
 
 :option_three
-kernel http://10.10.10.3/OS%20Images/netboot/memdisk raw iso
-initrd http://10.10.10.3/OS%20Images/WANulator/wanulator_2_11.iso 
+kernel ${b}/OS%20Images/netboot/memdisk iso raw
+initrd ${b}/OS%20Images/WANulator/wanulator_2_11.iso 
 boot
 
 goto custom_exit
