@@ -9,9 +9,9 @@ set github_user oddsock
 clear custom_choice
 menu Installation Menu
 item --gap Linux
-item option_three ${space} WANulator 2.11 no arguemnts
+item option_three ${space} WANulator 2.11 findiso arg
 item option_four ${space} WANulator 2.11 with harddisk in kernel line
-item option_one ${space} wanulator with append behind
+item option_one ${space} wanulator with iso-scan/filename=
 
 choose custom_choice || goto custom_exit
 echo ${cls}
@@ -22,6 +22,7 @@ goto custom_exit
 imgfree
 kernel ${memdisk}
 initrd http://10.10.10.3/wanulator_2_11.iso
+APPEND findiso=wanulator_2_11.iso
 boot
 
 :option_four
@@ -34,7 +35,7 @@ boot
 imgfree
 kernel ${memdisk} 
 initrd http://10.10.10.3/wanulator_2_11.iso
-APPEND harddisk
+APPEND iso-scan/filename=wanulator_2_11.iso
 boot
 
 goto custom_exit
