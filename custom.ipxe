@@ -29,8 +29,8 @@ initrd /wanulator_2_11.iso
 
 
 :option_three
-kernel "${b}/OS Images/netboot/memdisk" iso raw
-initrd "${b}/OS Images/WANulator/wanulator_2_11.iso"
+kernel ${memdisk} iso raw
+initrd http://10.10.10.3/wanulator_2_11.iso
 
 
 goto custom_exit
