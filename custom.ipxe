@@ -14,18 +14,21 @@ goto ${custom_choice}
 goto custom_exit
 
 :option_one
-kernel http://10.10.10.3/OS%20Images/netboot/memdisk raw iso
+kernel ${memdisk} iso raw
 initrd http://10.10.10.3/OS%20Images/Ubuntu/ubuntu-16.04-server-amd64.iso
-boot || goto custom_exit
+boot 
 
 :option_two
-kernel http://10.10.10.3/OS%20Images/netboot/memdisk raw iso
+kernel ${memdisk} iso raw
 initrd http://10.10.10.3/OS%20Images/Ubuntu/ubuntu-18.04.2-server-amd64.iso
-boot || goto custom_exit
+boot 
 
 :option_three
 kernel http://10.10.10.3/OS%20Images/netboot/memdisk raw iso
 initrd http://10.10.10.3/OS%20Images/WANulator/wanulator_2_11.iso 
+boot
+
+goto custom_exit
 
 :custom_exit
 chain utils.ipxe
