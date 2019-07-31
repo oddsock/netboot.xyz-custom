@@ -21,17 +21,17 @@ goto custom_exit
 :option_one
 kernel ${memdisk} iso raw
 initrd ${b}/wanulator_2_11.iso
-boot 
+
 
 :option_two
-kernel memdisk iso raw
-initrd wanulator_2_11.iso
-boot 
+kernel /memdisk iso raw
+initrd /wanulator_2_11.iso
+
 
 :option_three
-kernel ${b}/OS Images/netboot/memdisk iso raw
-initrd ${b}/OS Images/WANulator/wanulator_2_11.iso 
-boot
+kernel "${b}/OS Images/netboot/memdisk" iso raw
+initrd "${b}/OS Images/WANulator/wanulator_2_11.iso"
+
 
 goto custom_exit
 
