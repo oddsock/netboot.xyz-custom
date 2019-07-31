@@ -39,8 +39,8 @@ boot
 
 :option_one
 imgfree
-kernel ${memdisk} harddisk raw
-initrd http://10.10.10.3/wanulator_2_11.iso
+kernel ${memdisk}
+initrd http://10.10.10.3/wanulator_2_11.img
 boot
 
 goto custom_exit
