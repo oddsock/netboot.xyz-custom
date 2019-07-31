@@ -1,37 +1,4 @@
 #!ipxe
-isset ${server-ip} || set server-ip gru.test.domain
-
-:start
-menu Bootables
-item --gap --             -------------------------- Bootables ----------------------------------
-item --key 6 ubuntu16 Ubuntu 16.04 LTS
-item --key 8 ubuntu18 Ubuntu 18.04 LTS
-item --key 10 WANulator2.11
-item --gap --             ------------------------- Options --------------------------------
-item --key g goback (G)o back to previous menu
-choose version && goto ${version} || goto start
-
-:goback
-chain http://${server-ip}/boot/linux.ipxe
-
-:ubuntu16_x86_64
-kernel http://archive.ubuntu.com/ubuntu/dists/xenial/main/installer-i386/current/images/netboot/ubuntu-installer/i386/linux initrd=initrd.gz
-initrd http://archive.ubuntu.com/ubuntu/dists/xenial/main/installer-i386/current/images/netboot/ubuntu-installer/i386/initrd.gz
-boot || imgfree
-shell
-
-:ubuntu18_x86_64
-kernel http://archive.ubuntu.com/ubuntu/dists/xenial/main/installer-amd64/current/images/netboot/ubuntu-installer/amd64/linux initrd=initrd.gz
-initrd http://archive.ubuntu.com/ubuntu/dists/xenial/main/installer-amd64/current/images/netboot/ubuntu-installer/amd64/initrd.gz
-boot || imgfree
-shell
-
-:WANulator
-
-#!ipxe
-###
-### netboot.xyz-custom menu example
-###
 
 :custom
 clear custom_choice
