@@ -9,9 +9,9 @@ set github_user oddsock
 clear custom_choice
 menu Installation Menu
 item --gap Linux
-item option_three ${space} WANulator 2.11 findiso arg
+item option_three ${space} WANulator 2.11 vmalloc=512Mi
 item option_four ${space} WANulator 2.11 with harddisk in kernel line
-item option_one ${space} wanulator with iso-scan/filename=
+item option_one ${space} wanulator with modprobe phram phram=memdisk,$(memdiskfind)
 
 choose custom_choice || goto custom_exit
 echo ${cls}
@@ -22,7 +22,7 @@ goto custom_exit
 imgfree
 kernel ${memdisk}
 initrd http://10.10.10.3/wanulator_2_11.iso
-APPEND findiso=wanulator_2_11.iso
+APPEND vmalloc=512Mi
 boot
 
 :option_four
@@ -35,7 +35,7 @@ boot
 imgfree
 kernel ${memdisk} 
 initrd http://10.10.10.3/wanulator_2_11.iso
-APPEND iso-scan/filename=wanulator_2_11.iso
+APPEND modprobe phram phram=memdisk,$(memdiskfind) modprobe mtdblock vmalloc=512Mi
 boot
 
 goto custom_exit
