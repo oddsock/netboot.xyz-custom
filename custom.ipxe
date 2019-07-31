@@ -10,7 +10,7 @@ clear custom_choice
 menu Installation Menu
 item --gap Linux
 item ubuntu16.04 ${space} Ubuntu 16.04 LTS
-item ubuntu18.04 ${space} Ubuntu 18.04 LTS
+item ubuntu18.04 ${space} wan tftp
 item --gap WANulator (WIP)
 item option_three ${space} WANulator 2.11
 choose custom_choice || goto custom_exit
@@ -19,13 +19,13 @@ goto ${custom_choice}
 goto custom_exit
 
 :option_one
-kernel ${b}/OS%20Images/netboot/memdisk iso raw
+kernel ${memdisk} iso raw
 initrd ${b}/OS%20Images/Ubuntu/ubuntu-16.04-server-amd64.iso
 boot 
 
 :option_two
-kernel ${b}/OS%20Images/netboot/memdisk iso raw
-initrd ${b}/OS%20Images/Ubuntu/ubuntu-18.04.2-server-amd64.iso
+kernel /memdisk iso raw
+initrd /wanulator_2_11.iso
 boot 
 
 :option_three
