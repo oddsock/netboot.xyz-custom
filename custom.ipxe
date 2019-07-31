@@ -9,8 +9,8 @@ set github_user oddsock
 clear custom_choice
 menu Installation Menu
 item --gap Linux
-item ubuntu16.04 ${space} Ubuntu 16.04 LTS
-item ubuntu18.04 ${space} wan tftp
+item option_one ${space} Ubuntu 16.04 LTS
+item option_two ${space} wan tftp
 item --gap WANulator (WIP)
 item option_three ${space} WANulator 2.11
 item option_four ${space} WAN kernel last
@@ -20,16 +20,19 @@ goto ${custom_choice}
 goto custom_exit
 
 :option_one
+imgfree
 kernel ${memdisk} iso raw
 initrd ${b}/wanulator_2_11.iso
-
+boot
 
 :option_two
+imgfree
 kernel http://10.10.10.3/memdisk iso raw
 initrd http://10.10.10.3/wanulator_2_11.iso
 boot
 
 :option_three
+imgfree
 kernel ${memdisk} iso raw
 initrd http://10.10.10.3/wanulator_2_11.iso
 boot
