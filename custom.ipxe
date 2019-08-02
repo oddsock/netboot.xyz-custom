@@ -6,8 +6,8 @@ menu Installation Menu
 item --gap Linux
 item option_three ${space} WANulator 2.11 .dd memdisk iso
 item option_four ${space} WANulator 2.11 dd 
-#item option_one ${space} wanulator without  config
-#item option_two ${space} wanulator with config
+item option_one ${space} wanulator vmlinuz iso
+item option_two ${space} wanulator vmlinuz dd
 
 choose custom_choice || goto custom_exit
 echo ${cls}
@@ -28,16 +28,16 @@ boot
 
 :option_one
 imgfree
-kernel ${memdisk}
+kernel http://10.10.10.3/vmlinuz.lz
 module http://10.10.10.3/initrd.lz
-imgargs vmlinuz.lz boot=casper fetch=http://10.10.10.3/filesystem.squashfs
+imgargs vmlinuz.lz boot=casper fetch=http://10.10.10.3/wanulator_2_11.iso
 boot
 
 :option_two
 imgfree
 kernel http://10.10.10.3/vmlinuz.lz
 module http://10.10.10.3/initrd.lz
-imgargs vmlinuz.lz boot=casper config fetch=http://10.10.10.3/filesystem.squashfs
+imgargs vmlinuz.lz boot=casper fetch=http://10.10.10.3/wanulator.dd
 boot
 
 goto custom_exit
