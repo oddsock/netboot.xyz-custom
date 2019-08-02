@@ -4,8 +4,8 @@
 clear custom_choice
 menu Installation Menu
 item --gap Linux
-item option_three ${space} WANulator 2.11 .dd memdisk with iso
-item option_four ${space} WANulator 2.11 dd without iso
+item option_three ${space} WANulator 2.11 .dd memdisk iso
+item option_four ${space} WANulator 2.11 dd 
 #item option_one ${space} wanulator without  config
 #item option_two ${space} wanulator with config
 
