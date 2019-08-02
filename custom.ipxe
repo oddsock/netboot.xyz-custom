@@ -16,16 +16,14 @@ goto custom_exit
 
 :option_three
 imgfree
-kernel ${memdisk}
+kernel ${memdisk} iso raw
 initrd http://10.10.10.3/wanulator/wanulator.dd
-append iso raw
 boot
 
 :option_four
 imgfree
-kernel ${memdisk}
+kernel ${memdisk} harddisk
 initrd http://10.10.10.3/wanulator/wanulator.dd
-append 
 boot
 
 :option_one
