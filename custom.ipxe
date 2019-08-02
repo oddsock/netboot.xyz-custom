@@ -9,10 +9,10 @@ set github_user oddsock
 clear custom_choice
 menu Installation Menu
 item --gap Linux
-#item option_three ${space} WANulator 2.11
-item option_four ${space} WANulator 2.11 sanboot img
+item option_three ${space} WANulator 2.11
+#item option_four ${space} WANulator 2.11 sanboot img
 #item option_one ${space} wanulator with modprobe phram phram=memdisk,$(memdiskfind)
-item option_two ${space} wanulator img
+#item option_two ${space} wanulator img
 
 choose custom_choice || goto custom_exit
 echo ${cls}
