@@ -9,9 +9,9 @@ set github_user oddsock
 clear custom_choice
 menu Installation Menu
 item --gap Linux
-item option_three ${space} WANulator 2.11
-#item option_four ${space} WANulator 2.11 sanboot img
-#item option_one ${space} wanulator with modprobe phram phram=memdisk,$(memdiskfind)
+item option_three ${space} WANulator 2.11 with user
+item option_four ${space} WANulator 2.11 without user
+item option_one ${space} wanulator without user n console
 #item option_two ${space} wanulator img
 
 choose custom_choice || goto custom_exit
@@ -24,16 +24,20 @@ imgfree
 kernel http://10.10.10.3/vmlinuz
 module http://10.10.10.3/initrd.lz
 imgargs vmlinuz boot=live config console=ttyS0 username=root fetch=http://10.10.10.3/filesystem.squashfs
+boot
 
 :option_four
 imgfree
-sanboot http://10.10.10.3/wanulator.img 
+kernel http://10.10.10.3/vmlinuz
+module http://10.10.10.3/initrd.lz
+imgargs vmlinuz boot=live config console=ttyS0 fetch=http://10.10.10.3/filesystem.squashfs
 boot
 
 :option_one
 imgfree
-kernel ${memdisk} modprobe phram phram=memdisk,$(memdiskfind) modprobe mtdblock vmalloc=512Mi
-initrd http://10.10.10.3/wanulator_2_11.iso
+kernel http://10.10.10.3/vmlinuz
+module http://10.10.10.3/initrd.lz
+imgargs vmlinuz boot=live config fetch=http://10.10.10.3/filesystem.squashfs
 boot
 
 :option_one
