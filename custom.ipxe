@@ -12,7 +12,7 @@ item --gap Linux
 item option_three ${space} WANulator 2.11 with user
 item option_four ${space} WANulator 2.11 without user
 item option_one ${space} wanulator without user n console
-#item option_two ${space} wanulator img
+item option_two ${space} wanulator with append
 
 choose custom_choice || goto custom_exit
 echo ${cls}
@@ -40,10 +40,11 @@ module http://10.10.10.3/initrd.lz
 imgargs vmlinuz boot=live config fetch=http://10.10.10.3/filesystem.squashfs
 boot
 
-:option_one
+:option_two
 imgfree
-kernel ${memdisk}
-initrd http://10.10.10.3/wanulator.img
+kernel http://10.10.10.3/vmlinuz
+module http://10.10.10.3/initrd.lz
+append vmlinuz boot=live config console=ttyS0 username=root fetch=http://10.10.10.3/filesystem.squashfs
 boot
 
 goto custom_exit
