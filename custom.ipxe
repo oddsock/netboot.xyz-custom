@@ -23,28 +23,28 @@ goto custom_exit
 imgfree
 kernel http://10.10.10.3/vmlinuz.lz
 module http://10.10.10.3/initrd.lz
-imgargs vmlinuz boot=live config console=ttyS0 username=root fetch=http://10.10.10.3/filesystem.squashfs
+imgargs vmlinuz.lz boot=live config console=ttyS0 username=root fetch=http://10.10.10.3/filesystem.squashfs
 boot
 
 :option_four
 imgfree
 kernel http://10.10.10.3/vmlinuz.lz
 module http://10.10.10.3/initrd.lz
-imgargs vmlinuz boot=live config console=ttyS0 fetch=http://10.10.10.3/filesystem.squashfs
+imgargs vmlinuz.lz boot=live config console=ttyS0 fetch=http://10.10.10.3/filesystem.squashfs
 boot
 
 :option_one
 imgfree
 kernel http://10.10.10.3/vmlinuz.lz
 module http://10.10.10.3/initrd.lz
-imgargs vmlinuz boot=live config fetch=http://10.10.10.3/filesystem.squashfs
+imgargs vmlinuz.lz boot=live config fetch=http://10.10.10.3/filesystem.squashfs
 boot
 
 :option_two
 imgfree
 kernel http://10.10.10.3/vmlinuz.lz
 module http://10.10.10.3/initrd.lz
-append vmlinuz boot=live config console=ttyS0 username=root fetch=http://10.10.10.3/filesystem.squashfs
+append vmlinuz.lz boot=live config console=ttyS0 username=root fetch=http://10.10.10.3/filesystem.squashfs
 boot
 
 goto custom_exit
