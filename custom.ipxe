@@ -9,7 +9,7 @@ set github_user oddsock
 clear custom_choice
 menu Installation Menu
 item --gap Linux
-item option_three ${space} WANulator 2.11 with user
+item option_three ${space} WANulator 2.11 with user .bin
 item option_four ${space} WANulator 2.11 without user
 item option_one ${space} wanulator without user n console
 item option_two ${space} wanulator with append
@@ -21,28 +21,28 @@ goto custom_exit
 
 :option_three
 imgfree
-kernel http://10.10.10.3/vmlinuz
+kernel http://10.10.10.3/vmlinuz.lz
 module http://10.10.10.3/initrd.lz
 imgargs vmlinuz boot=live config console=ttyS0 username=root fetch=http://10.10.10.3/filesystem.squashfs
 boot
 
 :option_four
 imgfree
-kernel http://10.10.10.3/vmlinuz
+kernel http://10.10.10.3/vmlinuz.lz
 module http://10.10.10.3/initrd.lz
 imgargs vmlinuz boot=live config console=ttyS0 fetch=http://10.10.10.3/filesystem.squashfs
 boot
 
 :option_one
 imgfree
-kernel http://10.10.10.3/vmlinuz
+kernel http://10.10.10.3/vmlinuz.lz
 module http://10.10.10.3/initrd.lz
 imgargs vmlinuz boot=live config fetch=http://10.10.10.3/filesystem.squashfs
 boot
 
 :option_two
 imgfree
-kernel http://10.10.10.3/vmlinuz
+kernel http://10.10.10.3/vmlinuz.lz
 module http://10.10.10.3/initrd.lz
 append vmlinuz boot=live config console=ttyS0 username=root fetch=http://10.10.10.3/filesystem.squashfs
 boot
