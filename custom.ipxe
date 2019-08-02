@@ -8,8 +8,8 @@ clear custom_choice
 menu Installation Menu
 item --gap Linux
 item option_three ${space} WANulator 2.11 .dd memdisk iso
-item option_four ${space} WANulator networks with bootif
-item option_one ${space} wanulator network  again
+item option_four ${space} WANulator networks with bootif 3
+item option_one ${space} wanulator network  3
 item option_two ${space} wanulator vmlinuz dd
 
 choose custom_choice || goto custom_exit
@@ -26,12 +26,12 @@ boot
 :option_four
 imgfree
 initrd http://10.10.10.3/wanulator/live/casper/initrd.lz 
-chain http://10.10.10.3/wanulator/live/vmlinuz.lz boot=casper netboot=nfs nfsroot=${server_ip}:wanulator/live/ BOOTIF=01-${net0/mac:hexhyp}  
+chain http://10.10.10.3/wanulator/live/vmlinuz.lz boot=casper netboot=nfs nfsroot=${server_ip}:wanulator/live/,vers=4,tcp BOOTIF=01-${net0/mac:hexhyp}  
 boot 
 
 :option_one
 initrd http://10.10.10.3/wanulator/live/casper/initrd.lz 
-chain http://10.10.10.3/wanulator/live/vmlinuz.lz boot=casper netboot=nfs nfsroot=${server_ip}:${nfs_path} ip=dhcp  
+chain http://10.10.10.3/wanulator/live/vmlinuz.lz boot=casper netboot=nfs nfsroot=${server_ip}:${nfs_path},vers=4,tcp ip=dhcp  
 boot 
   
  
