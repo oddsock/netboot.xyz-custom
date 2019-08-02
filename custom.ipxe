@@ -6,7 +6,7 @@ menu Installation Menu
 item --gap Linux
 item option_three ${space} WANulator 2.11 with user .lz
 item option_four ${space} WANulator 2.11 without user
-item option_one ${space} wanulator without user n console n config
+item option_one ${space} wanulator without  config
 item option_two ${space} wanulator with config
 
 choose custom_choice || goto custom_exit
@@ -18,14 +18,14 @@ goto custom_exit
 imgfree
 kernel http://10.10.10.3/vmlinuz.lz
 module http://10.10.10.3/initrd.lz
-imgargs vmlinuz.lz boot=live config console=ttyS0 username=root fetch=http://10.10.10.3/filesystem.squashfs
+imgargs vmlinuz.lz boot=casper config username=root fetch=http://10.10.10.3/filesystem.squashfs
 boot
 
 :option_four
 imgfree
 kernel http://10.10.10.3/vmlinuz.lz
 module http://10.10.10.3/initrd.lz
-imgargs vmlinuz.lz boot=live config console=ttyS0 fetch=http://10.10.10.3/filesystem.squashfs
+imgargs vmlinuz.lz boot=casper config fetch=http://10.10.10.3/filesystem.squashfs
 boot
 
 :option_one
