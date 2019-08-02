@@ -1,10 +1,5 @@
 #!ipxe
 
-set b http://10.10.10.3
-set 210:string http://10.10.10.3/
-set github_user oddsock
-
-
 :custom
 clear custom_choice
 menu Installation Menu
