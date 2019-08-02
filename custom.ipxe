@@ -30,7 +30,7 @@ boot
 
 :option_one
 imgfree
-kernel http://10.10.10.3/vmlinuz.lz
+kernel ${memdisk}
 module http://10.10.10.3/initrd.lz
 imgargs vmlinuz.lz boot=casper fetch=http://10.10.10.3/filesystem.squashfs
 boot
@@ -46,3 +46,22 @@ goto custom_exit
 
 :custom_exit
 exit
+
+
+
+
+
+
+#:option_one
+#imgfree
+#kernel http://10.10.10.3/vmlinuz.lz
+#module http://10.10.10.3/initrd.lz
+#imgargs vmlinuz.lz boot=casper fetch=http://10.10.10.3/filesystem.squashfs
+#boot
+#
+#:option_two
+#imgfree
+#kernel http://10.10.10.3/vmlinuz.lz
+#module http://10.10.10.3/initrd.lz
+#imgargs vmlinuz.lz boot=casper config fetch=http://10.10.10.3/filesystem.squashfs
+#boot
