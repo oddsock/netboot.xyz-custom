@@ -1,12 +1,15 @@
 #!ipxe
 
+ set server_ip 10.10.10.3
+ set nfs_path /wanulator/live
+  
 :custom
 clear custom_choice
 menu Installation Menu
 item --gap Linux
 item option_three ${space} WANulator 2.11 .dd memdisk iso
 item option_four ${space} WANulator 2.11 dd 
-item option_one ${space} wanulator vmlinuz iso
+item option_one ${space} wanulator weird NFS boot
 item option_two ${space} wanulator vmlinuz dd
 
 choose custom_choice || goto custom_exit
@@ -22,16 +25,18 @@ boot
 
 :option_four
 imgfree
-kernel ${memdisk} harddisk
-initrd http://10.10.10.3/wanulator/wanulator.dd
+kernel http://10.10.10.3/vmlinuz.lz
+module http://10.10.10.3/initrd.lz
+imgargs vmlinuz.lz boot=casper fetch=http://10.10.10.3/filesystem.squashfs
 boot
 
 :option_one
-imgfree
-kernel http://10.10.10.3/vmlinuz.lz
-module http://10.10.10.3/initrd.lz
-imgargs vmlinuz.lz boot=casper fetch=http://10.10.10.3/wanulator_2_11.iso
-boot
+kernel nfs://${server_ip}${nfs_path}/casper/vmlinuz || read void
+initrd nfs://${server_ip}${nfs_path}/casper/initrd.lz || read void
+imgargs vmlinuz initrd=initrd.lz root=/dev/nfs boot=casper netboot=nfs nfsroot=${server_ip}:${nfs_path} ip=dhcp splash quiet -- || read void
+boot || read void
+  
+ 
 
 :option_two
 imgfree
