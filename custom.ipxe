@@ -45,5 +45,4 @@ boot
 goto custom_exit
 
 :custom_exit
-chain utils.ipxe
 exit
